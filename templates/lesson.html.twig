@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <span>Lesson {{ lesson.id }} in Group {{ group.id }}</span>
+    <div>
+    {% if not lesson.isComplete %}
+        <button data-controller="complete" data-complete-lesson-id-value="{{ lesson.id }}">Complete</button>
+    {% else %}
+        Lesson is complete
+    {% endif %}
+    </div>
+    <div id="lesson-{{ lesson.id }}">
+        {% for student in students %}
+            <span>
+            {{ student.name }} [{{ student.id }}]
+            {% if lesson.isComplete %}
+                {% if absentees[student.id] is defined %}
+                    <button type="button" class="btn btn-danger btn-sm">Absent</button>
+                {% else %}
+                    <button type="button" class="btn btn-success btn-sm">Present</button>
+                {% endif %}
+            {% else %}
+                <button
+                        id="student-presence-{{ student.id }}"
+                        type="button" class="btn btn-success btn-sm"
+                        data-controller="presence"
+                        data-presence-student-id-value="{{ student.id }}"
+                >Present</button>
+                <button
+                        id="student-absence-{{ student.id }}"
+                        type="button" class="btn btn-danger btn-sm"
+                        data-controller="absence"
+                        data-absence-student-id-value="{{ student.id }}"
+                        data-absence-lesson-id-value="{{ lesson.id }}"
+                        data-absence-group-id-value="{{ group.id }}"
+                >Absent</button>
+                </span>
+            {% endif %}
+            </p>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

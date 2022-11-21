@@ -1,0 +1,8 @@
+parameters:
+  level: 6
+  paths:
+    - src
+  checkGenericClassInNonGenericObjectType: false
+  ignoreErrors:
+    - '#Property App\\Document\\Lesson::\$groupId is never read, only written.+#'
+    - '#Property App\\Document\\Lesson::\$groupCount is never read, only written.+#'

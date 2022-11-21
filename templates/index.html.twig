@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Attendance:</h3>
+                {% for lesson in lessons %}
+                    <p><a href="/lesson/{{ lesson.id }}">Lesson {{ lesson.id }}</a></p>
+                {% endfor %}
+            </div>
+
+            <div class="col">
+                <h3>Stats:</h3>
+                {% for student in students %}
+                    <p><a href="/student/{{ student.id }}/stats">{{ student.name }}</a>
+                    </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
