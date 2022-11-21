@@ -77,6 +77,13 @@ docker-compose exec --workdir=/app web bin/console do:fi:lo
 ```
 Visit http://localhost to manually record an attendance in a lesson. 
 
+### Building frontend 
+```
+npm -g i yarn
+yarn install 
+yarn build
+```
+
 ### Running tests
 ```
 docker-compose exec --workdir=/app web bin/phpunit
